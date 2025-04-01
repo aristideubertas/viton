@@ -82,37 +82,49 @@ class FitDiTGenerator:
         new_width, new_height = resolution.split("x")
         new_width = int(new_width)
         new_height = int(new_height)
-        with torch.inference_mode():
-            garm_img = Image.open(garm_img)
-            vton_img = Image.open(vton_img)
+        try:
+            with torch.inference_mode():
+                garm_img = Image.open(garm_img)
+                vton_img = Image.open(vton_img)
 
-            model_image_size = vton_img.size
-            garm_img, _, _ = pad_and_resize(garm_img, new_width=new_width, new_height=new_height)
-            vton_img, pad_w, pad_h = pad_and_resize(vton_img, new_width=new_width, new_height=new_height)
+                model_image_size = vton_img.size
+                garm_img, _, _ = pad_and_resize(garm_img, new_width=new_width, new_height=new_height)
+                vton_img, pad_w, pad_h = pad_and_resize(vton_img, new_width=new_width, new_height=new_height)
 
-            mask = pre_mask["layers"][0][:,:,3]
-            mask = Image.fromarray(mask)
-            mask, _, _ = pad_and_resize(mask, new_width=new_width, new_height=new_height, pad_color=(0,0,0))
-            mask = mask.convert("L")
-            pose_image = Image.fromarray(pose_image)
-            pose_image, _, _ = pad_and_resize(pose_image, new_width=new_width, new_height=new_height, pad_color=(0,0,0))
-            if seed==-1:
-                seed = random.randint(0, 2147483647)
-            res = self.pipeline(
-                height=new_height,
-                width=new_width,
-                guidance_scale=image_scale,
-                num_inference_steps=n_steps,
-                generator=torch.Generator("cpu").manual_seed(seed),
-                cloth_image=garm_img,
-                model_image=vton_img,
-                mask=mask,
-                pose_image=pose_image,
-                num_images_per_prompt=num_images_per_prompt
-            ).images
-            for idx in range(len(res)):
-                res[idx] = unpad_and_resize(res[idx], pad_w, pad_h, model_image_size[0], model_image_size[1])
-            return res
+                mask = pre_mask["layers"][0][:,:,3]
+                mask = Image.fromarray(mask)
+                mask, _, _ = pad_and_resize(mask, new_width=new_width, new_height=new_height, pad_color=(0,0,0))
+                mask = mask.convert("L")
+                pose_image = Image.fromarray(pose_image)
+                pose_image, _, _ = pad_and_resize(pose_image, new_width=new_width, new_height=new_height, pad_color=(0,0,0))
+                if seed==-1:
+                    seed = random.randint(0, 2147483647)
+                res = self.pipeline(
+                    height=new_height,
+                    width=new_width,
+                    guidance_scale=image_scale,
+                    num_inference_steps=n_steps,
+                    generator=torch.Generator("cpu").manual_seed(seed),
+                    cloth_image=garm_img,
+                    model_image=vton_img,
+                    mask=mask,
+                    pose_image=pose_image,
+                    num_images_per_prompt=num_images_per_prompt
+                ).images
+                
+                result = []
+                for idx in range(len(res)):
+                    result.append(unpad_and_resize(res[idx], pad_w, pad_h, model_image_size[0], model_image_size[1]))
+                
+                return result
+        finally:
+            # Clean up memory after generation
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+            
+            # Force Python's garbage collector to clean up
+            import gc
+            gc.collect()
 
 
 def pad_and_resize(im, new_width=768, new_height=1024, pad_color=(255, 255, 255), mode=Image.LANCZOS):

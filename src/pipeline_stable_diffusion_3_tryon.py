@@ -809,6 +809,22 @@ class StableDiffusion3TryOnPipeline(DiffusionPipeline, SD3LoraLoaderMixin, FromS
 
         # Offload all models
         self.maybe_free_model_hooks()
+        
+        # Clean up intermediate tensors
+        del latents, latent_model_input, vton_model_input, mask_input
+        del garm_model_input, pose_fea_input, noise_pred
+        if 'noise_pred_uncond' in locals():
+            del noise_pred_uncond
+        if 'noise_pred_text' in locals():
+            del noise_pred_text
+        if 'ref_key' in locals():
+            del ref_key
+        if 'ref_value' in locals():
+            del ref_value
+        
+        # Force garbage collection
+        import gc
+        gc.collect()
 
         if not return_dict:
             return (image,)
