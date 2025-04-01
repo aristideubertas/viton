@@ -245,20 +245,27 @@ def create_demo(model_path, device, offload, aggressive_offload, with_fp16):
                     inputs=vton_img,
                     examples_per_page=7,
                     examples=[
-                        os.path.join(example_path, 'model/2273_on_model.jpg'),
-                        os.path.join(example_path, 'model/0303.jpg'),
-                        os.path.join(example_path, 'model/2.jpg'),
-                        os.path.join(example_path, 'model/0083.jpg'),
+                        os.path.join(example_path, 'model/drest/shirt_only.jpg'),
+                        os.path.join(example_path, 'model/drest/jumper53.jpg'),
+                        os.path.join(example_path, 'model/drest/no_sleeves_cardigan_53.jpg'),
+                        os.path.join(example_path, 'model/drest/shirt_38.jpg'),
+                        os.path.join(example_path, 'model/drest/tight_sweater.jpg'),
+
+                        # os.path.join(example_path, 'model/0303.jpg'),
+                        # os.path.join(example_path, 'model/2.jpg'),
+                        # os.path.join(example_path, 'model/0083.jpg'),
                     ])
                 example = gr.Examples(
                     label="Model (upper-body/lower-body)",
                     inputs=vton_img,
                     examples_per_page=7,
                     examples=[
-                        os.path.join(example_path, 'model/523_on_model.jpg'),
-                        os.path.join(example_path, 'model/0179.jpg'),
-                        os.path.join(example_path, 'model/0223.jpg'),
-                        os.path.join(example_path, 'model/0347.jpg'),
+                        os.path.join(example_path, 'model/drest/jeans_49.jpg'),
+                        os.path.join(example_path, 'model/drest/skirt_129.jpg'),
+
+                        # os.path.join(example_path, 'model/0179.jpg'),
+                        # os.path.join(example_path, 'model/0223.jpg'),
+                        # os.path.join(example_path, 'model/0347.jpg'),
                     ])
                 example = gr.Examples(
                     label="Model (dresses)",
