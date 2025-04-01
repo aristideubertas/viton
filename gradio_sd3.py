@@ -233,9 +233,9 @@ def create_demo(model_path, device, offload, aggressive_offload, with_fp16):
                     inputs=vton_img,
                     examples_per_page=7,
                     examples=[
-                        os.path.join(example_path, 'model/0279.jpg'),
+                        os.path.join(example_path, 'model/523_on_model.jpg'),
                         os.path.join(example_path, 'model/0303.jpg'),
-                        os.path.join(example_path, 'model/2.jpg'),
+                        os.path.join(example_path, 'model/2273_on_model.jpg'),
                         os.path.join(example_path, 'model/0083.jpg'),
                     ])
                 example = gr.Examples(
