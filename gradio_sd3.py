@@ -178,27 +178,9 @@ def resize_image(img, target_size=768):
     return resized_img
 
 HEADER = """
-<h1 style="text-align: center;"> FitDiT: Advancing the Authentic Garment Details for High-fidelity Virtual Try-on </h1>
-<div style="display: flex; justify-content: center; align-items: center;">
-  <a href="https://github.com/BoyuanJiang/FitDiT" style="margin: 0 2px;">
-    <img src='https://img.shields.io/badge/GitHub-Repo-blue?style=flat&logo=GitHub' alt='GitHub'>
-  </a>
-  <a href="https://arxiv.org/abs/2411.10499" style="margin: 0 2px;">
-    <img src='https://img.shields.io/badge/arXiv-2411.10499-red?style=flat&logo=arXiv&logoColor=red' alt='arxiv'>
-  </a>
-  <a href="http://demo.fitdit.byjiang.com/" style="margin: 0 2px;">
-    <img src='https://img.shields.io/badge/Demo-Gradio-gold?style=flat&logo=Gradio&logoColor=red' alt='Demo'>
-  </a>
-  <a href='https://byjiang.com/FitDiT/' style="margin: 0 2px;">
-    <img src='https://img.shields.io/badge/Webpage-Project-silver?style=flat&logo=&logoColor=orange' alt='webpage'>
-  </a>
-  <a href="https://raw.githubusercontent.com/BoyuanJiang/FitDiT/refs/heads/main/LICENSE" style="margin: 0 2px;">
-    <img src='https://img.shields.io/badge/License-CC BY--NC--SA--4.0-lightgreen?style=flat&logo=Lisence' alt='License'>
-  </a>
-</div>
-<br>
-FitDiT is designed for high-fidelity virtual try-on using Diffusion Transformers (DiT). It can only be used for <b>Non-commercial Use</b>.<br>
-If you like our work, please star <a href="https://github.com/BoyuanJiang/FitDiT" style="color: blue; text-decoration: underline;">our github repository</a>.
+<h1 style="text-align: center;"> Drest Avatar Virtual Try-On </h1>
+
+Dress your avatar with the available garnments or upload your own garment. JPGs smaller than 1MB are recommended. Choose a similar input clothing type to get better results (eg similar fit, style, length, etc.)
 """
 
 def create_demo(model_path, device, offload, aggressive_offload, with_fp16):
