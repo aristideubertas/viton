@@ -70,12 +70,14 @@ def create_demo(generator, example_path):
                 example = gr.Examples(
                     label="Model (upper-body/lower-body)",
                     inputs=vton_img,
-                    examples_per_page=7,
+                    examples_per_page=12,
                     examples=[
                         # tops
                         os.path.join(example_path, 'model/drest/upper_body/jumper53.jpg'),
                         os.path.join(example_path, 'model/drest/upper_body/shirt_38.jpg'),
                         os.path.join(example_path, 'model/drest/upper_body/tight_sweater.jpg'),
+                        os.path.join(example_path, 'model/drest/upper_body/tight_long_sleeve_rolled.jpg'),
+                        os.path.join(example_path, 'model/drest/upper_body/tight_long_sleeve.jpg'),
 
                         # skirts
                         os.path.join(example_path, 'model/drest/skirt/above_ankle_skirt.jpg'),
@@ -85,41 +87,55 @@ def create_demo(generator, example_path):
                         os.path.join(example_path, 'model/drest/skirt/mini_skirt.jpg'),
                         
                     ])
-                example = gr.Examples(
-                    label="Model (dresses)",
-                    inputs=vton_img,
-                    examples_per_page=7,
-                    examples=[
-                        os.path.join(example_path, 'model/4.jpg'),
-                        os.path.join(example_path, 'model/5.jpg'),
-                        os.path.join(example_path, 'model/6.jpg'),
-                        os.path.join(example_path, 'model/7.jpg'),
-                    ])
+                # example = gr.Examples(
+                #     label="Model (dresses)",
+                #     inputs=vton_img,
+                #     examples_per_page=4,
+                #     examples=[
+                #         os.path.join(example_path, 'model/4.jpg'),
+                #         os.path.join(example_path, 'model/5.jpg'),
+                #         os.path.join(example_path, 'model/6.jpg'),
+                #         os.path.join(example_path, 'model/7.jpg'),
+                #     ])
             with gr.Column():
                 example = gr.Examples(
                     label="Garment (upper-body)",
                     inputs=garm_img,
-                    examples_per_page=7,
+                    examples_per_page=4,
                     examples=[
                         os.path.join(example_path, 'garment/12.png'),
-                        os.path.join(example_path, 'garment/0012.jpg'),
-                        os.path.join(example_path, 'garment/0047.jpg'),
                         os.path.join(example_path, 'garment/0049.jpg'),
+                        os.path.join(example_path, 'garment/drest/top/ai_124_thumb.jpg'),
+                        os.path.join(example_path, 'garment/drest/top/ai_436_thumb.jpg'),
+                        os.path.join(example_path, 'garment/drest/top/ai_546_thumb.jpg'),
+                        os.path.join(example_path, 'garment/drest/top/ai_1055_thumb.jpg'),
+                        os.path.join(example_path, 'garment/drest/top/ai_1261_thumb.jpg'),
+                        os.path.join(example_path, 'garment/drest/top/ai_1503_thumb.jpg'),
+                        os.path.join(example_path, 'garment/drest/top/ai_1890_thumb.jpg'),
+                        
                     ])
                 example = gr.Examples(
                     label="Garment (lower-body)",
                     inputs=garm_img,
-                    examples_per_page=7,
+                    examples_per_page=4,
                     examples=[
                         os.path.join(example_path, 'garment/0317.jpg'),
-                        os.path.join(example_path, 'garment/0327.jpg'),
-                        os.path.join(example_path, 'garment/0329.jpg'),
+                        os.path.join(example_path, 'garment/drest/skirt/ai_723_thumb.jpg'),
+                        os.path.join(example_path, 'garment/drest/skirt/ai_734_thumb.jpg'),
+                        os.path.join(example_path, 'garment/drest/skirt/ai_848_thumb.jpg'),
+                        os.path.join(example_path, 'garment/drest/skirt/ai_865_thumb.jpg'),
+                        os.path.join(example_path, 'garment/drest/skirt/ai_870_thumb.jpg'),
+                        os.path.join(example_path, 'garment/drest/skirt/ai_1179_thumb.jpg'),
+                        os.path.join(example_path, 'garment/drest/skirt/ai_1193_thumb.jpg'),
+                        os.path.join(example_path, 'garment/drest/skirt/ai_1198_thumb.jpg'),
+                        os.path.join(example_path, 'garment/drest/skirt/ai_1265_thumb.jpg'),
+
                         os.path.join(example_path, 'garment/0362.jpg'),
                     ])
                 example = gr.Examples(
                     label="Garment (dresses)",
                     inputs=garm_img,
-                    examples_per_page=7,
+                    examples_per_page=4,
                     examples=[
                         os.path.join(example_path, 'garment/8.jpg'),
                         os.path.join(example_path, 'garment/9.png'),
