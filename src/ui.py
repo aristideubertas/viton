@@ -56,24 +56,34 @@ def create_demo(generator, example_path):
 
         with gr.Row():
             with gr.Column():
-                example = gr.Examples(
-                    label="Model (upper-body)",
-                    inputs=vton_img,
-                    examples_per_page=7,
-                    examples=[
-                        os.path.join(example_path, 'model/drest/jumper53.jpg'),
-                        os.path.join(example_path, 'model/drest/no_sleeves_cardigan_53.jpg'),
-                        os.path.join(example_path, 'model/drest/shirt_38.jpg'),
-                        os.path.join(example_path, 'model/drest/tight_sweater.jpg'),
-                    ])
+                # example = gr.Examples(
+                    # label="Model (upper-body)",
+                    # inputs=vton_img,
+                    # examples_per_page=7,
+                    # examples=[
+                    #     os.path.join(example_path, 'model/drest/upper_body/jumper53.jpg'),
+                    #     os.path.join(example_path, 'model/drest/upper_body/no_sleeves_cardigan_53.jpg'),
+                    #     os.path.join(example_path, 'model/drest/upper_body/shirt_38.jpg'),
+                    #     os.path.join(example_path, 'model/drest/upper_body/tight_sweater.jpg'),
+                    # ])
+
                 example = gr.Examples(
                     label="Model (upper-body/lower-body)",
                     inputs=vton_img,
                     examples_per_page=7,
                     examples=[
-                        os.path.join(example_path, 'model/drest/jeans_49.jpg'),
-                        os.path.join(example_path, 'model/drest/skirt_129.jpg'),
-                        os.path.join(example_path, 'model/drest/tight_sweater.jpg'),
+                        # tops
+                        os.path.join(example_path, 'model/drest/upper_body/jumper53.jpg'),
+                        os.path.join(example_path, 'model/drest/upper_body/shirt_38.jpg'),
+                        os.path.join(example_path, 'model/drest/upper_body/tight_sweater.jpg'),
+
+                        # skirts
+                        os.path.join(example_path, 'model/drest/skirt/above_ankle_skirt.jpg'),
+                        os.path.join(example_path, 'model/drest/skirt/above_knee.jpg'),
+                        os.path.join(example_path, 'model/drest/skirt/below_knee_skirt.jpg'),
+                        os.path.join(example_path, 'model/drest/skirt/long_skirt.jpg'),
+                        os.path.join(example_path, 'model/drest/skirt/mini_skirt.jpg'),
+                        
                     ])
                 example = gr.Examples(
                     label="Model (dresses)",
