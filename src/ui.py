@@ -56,48 +56,53 @@ def create_demo(generator, example_path):
 
         with gr.Row():
             with gr.Column():
-                # example = gr.Examples(
-                    # label="Model (upper-body)",
-                    # inputs=vton_img,
-                    # examples_per_page=7,
-                    # examples=[
-                    #     os.path.join(example_path, 'model/drest/upper_body/jumper53.jpg'),
-                    #     os.path.join(example_path, 'model/drest/upper_body/no_sleeves_cardigan_53.jpg'),
-                    #     os.path.join(example_path, 'model/drest/upper_body/shirt_38.jpg'),
-                    #     os.path.join(example_path, 'model/drest/upper_body/tight_sweater.jpg'),
-                    # ])
+                # Use Tabs instead of Accordions for exclusive selection behavior
+                with gr.Tabs() as model_tabs:
+                    with gr.TabItem("Model (upper-body/lower-body)"):
+                        gr.Examples(
+                            label="",
+                            inputs=vton_img,
+                            examples_per_page=12,
+                            examples=[
+                                # tops
+                                os.path.join(example_path, 'model/drest/upper_body/jumper53.jpg'),
+                                os.path.join(example_path, 'model/drest/upper_body/shirt_38.jpg'),
+                                os.path.join(example_path, 'model/drest/upper_body/tight_sweater.jpg'),
+                                os.path.join(example_path, 'model/drest/upper_body/tight_long_sleeve_rolled.jpg'),
+                                os.path.join(example_path, 'model/drest/upper_body/tight_long_sleeve.jpg'),
+                                os.path.join(example_path, 'model/drest/upper_body/result_73.jpg'),
 
-                example = gr.Examples(
-                    label="Model (upper-body/lower-body)",
-                    inputs=vton_img,
-                    examples_per_page=12,
-                    examples=[
-                        # tops
-                        os.path.join(example_path, 'model/drest/upper_body/jumper53.jpg'),
-                        os.path.join(example_path, 'model/drest/upper_body/shirt_38.jpg'),
-                        os.path.join(example_path, 'model/drest/upper_body/tight_sweater.jpg'),
-                        os.path.join(example_path, 'model/drest/upper_body/tight_long_sleeve_rolled.jpg'),
-                        os.path.join(example_path, 'model/drest/upper_body/tight_long_sleeve.jpg'),
-                        os.path.join(example_path, 'model/drest/upper_body/result_73.jpg'),
+                                # skirts
+                                os.path.join(example_path, 'model/drest/skirt/above_ankle_skirt.jpg'),
+                                os.path.join(example_path, 'model/drest/skirt/above_knee.jpg'),
+                                os.path.join(example_path, 'model/drest/skirt/below_knee_skirt.jpg'),
+                                os.path.join(example_path, 'model/drest/skirt/long_skirt.jpg'),
+                                os.path.join(example_path, 'model/drest/skirt/mini_skirt.jpg'),
+                            ])
+                    
+                    with gr.TabItem("Model (skirts only)"):
+                        gr.Examples(
+                            label="",
+                            inputs=vton_img,
+                            examples_per_page=12,
+                            examples=[
+                                # for all images in the folder model/drest/skirt_only, loop through them
+                                os.path.join(example_path, 'model/drest/skirt_only', img)
+                                for img in os.listdir(os.path.join(example_path, 'model/drest/skirt_only'))
+                            ])        
 
-                        # skirts
-                        os.path.join(example_path, 'model/drest/skirt/above_ankle_skirt.jpg'),
-                        os.path.join(example_path, 'model/drest/skirt/above_knee.jpg'),
-                        os.path.join(example_path, 'model/drest/skirt/below_knee_skirt.jpg'),
-                        os.path.join(example_path, 'model/drest/skirt/long_skirt.jpg'),
-                        os.path.join(example_path, 'model/drest/skirt/mini_skirt.jpg'),
-                        
-                    ])
-                # example = gr.Examples(
-                #     label="Model (dresses)",
-                #     inputs=vton_img,
-                #     examples_per_page=4,
-                #     examples=[
-                #         os.path.join(example_path, 'model/4.jpg'),
-                #         os.path.join(example_path, 'model/5.jpg'),
-                #         os.path.join(example_path, 'model/6.jpg'),
-                #         os.path.join(example_path, 'model/7.jpg'),
-                #     ])
+                    # with gr.TabItem("Model (dresses)"):
+                    #     gr.Examples(
+                    #         label="",
+                    #         inputs=vton_img,
+                    #         examples_per_page=4,
+                    #         examples=[
+                    #             os.path.join(example_path, 'model/4.jpg'),
+                    #             os.path.join(example_path, 'model/5.jpg'),
+                    #             os.path.join(example_path, 'model/6.jpg'),
+                    #             os.path.join(example_path, 'model/7.jpg'),
+                    #         ])
+
             with gr.Column():
                 example = gr.Examples(
                     label="Garment (upper-body)",
