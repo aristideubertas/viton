@@ -78,6 +78,7 @@ def create_demo(generator, example_path):
                         os.path.join(example_path, 'model/drest/upper_body/tight_sweater.jpg'),
                         os.path.join(example_path, 'model/drest/upper_body/tight_long_sleeve_rolled.jpg'),
                         os.path.join(example_path, 'model/drest/upper_body/tight_long_sleeve.jpg'),
+                        os.path.join(example_path, 'model/drest/upper_body/result_73.jpg'),
 
                         # skirts
                         os.path.join(example_path, 'model/drest/skirt/above_ankle_skirt.jpg'),
@@ -103,7 +104,6 @@ def create_demo(generator, example_path):
                     inputs=garm_img,
                     examples_per_page=4,
                     examples=[
-                        os.path.join(example_path, 'garment/12.png'),
                         os.path.join(example_path, 'garment/0049.jpg'),
                         os.path.join(example_path, 'garment/drest/top/ai_124_thumb.jpg'),
                         os.path.join(example_path, 'garment/drest/top/ai_436_thumb.jpg'),
@@ -112,6 +112,7 @@ def create_demo(generator, example_path):
                         os.path.join(example_path, 'garment/drest/top/ai_1261_thumb.jpg'),
                         os.path.join(example_path, 'garment/drest/top/ai_1503_thumb.jpg'),
                         os.path.join(example_path, 'garment/drest/top/ai_1890_thumb.jpg'),
+                        os.path.join(example_path, 'garment/drest/top/smanicato_ganni.jpg'),
                         
                     ])
                 example = gr.Examples(
