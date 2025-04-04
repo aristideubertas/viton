@@ -13,13 +13,13 @@ def create_demo(generator, example_path):
     Create the Gradio demo interface.
     
     Args:
-        generator: FitDiTGenerator instance
+        generator: DrestyGenerator instance
         example_path: Path to example images
         
     Returns:
         Gradio Blocks interface
     """
-    with gr.Blocks(title="FitDiT") as demo:
+    with gr.Blocks(title="Dresty") as demo:
         gr.Markdown(HEADER)
         with gr.Row():
             with gr.Column():

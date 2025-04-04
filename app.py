@@ -1,13 +1,13 @@
 """
-Main entry point for the FitDiT Gradio application.
+Main entry point for the Dresty Gradio application.
 This file has been refactored to improve maintainability by splitting functionality
 into separate modules:
-- src/generator.py: Contains the FitDiTGenerator class for model initialization and inference
+- src/generator.py: Contains the DrestyGenerator class for model initialization and inference
 - src/image_utils.py: Contains image processing utilities
 - src/ui.py: Contains the Gradio UI components
 """
 import os
-from src.generator import FitDiTGenerator
+from src.generator import DrestyGenerator
 from src.ui import create_demo
 
 # Path to example images
@@ -28,15 +28,15 @@ def create_demo_wrapper(model_path, device, offload, aggressive_offload, with_fp
         Gradio Blocks interface
     """
     # Initialize the generator
-    generator = FitDiTGenerator(model_path, offload, aggressive_offload, device, with_fp16)
+    generator = DrestyGenerator(model_path, offload, aggressive_offload, device, with_fp16)
     
     # Create and return the demo
     return create_demo(generator, example_path)
 
 if __name__ == "__main__":
     import argparse
-    parser = argparse.ArgumentParser(description="FitDiT")
-    parser.add_argument("--model_path", type=str, required=True, help="The path of FitDiT model.")
+    parser = argparse.ArgumentParser(description="Dresty")
+    parser.add_argument("--model_path", type=str, required=True, help="The path of Dresty model.")
     parser.add_argument("--device", type=str, default="cuda:0", help="Device to use")
     parser.add_argument("--fp16", action="store_true", help="Load model with fp16, default is bf16")
     parser.add_argument("--offload", action="store_true", help="Offload model to CPU when not in use.")

@@ -15,10 +15,10 @@ import random
 import gc
 
 
-class FitDiTGenerator:
+class DrestyGenerator:
     def __init__(self, model_root, offload=False, aggressive_offload=False, device="cuda:0", with_fp16=False):
         """
-        Initialize the FitDiT generator with the specified model and settings.
+        Initialize the Dresty generator with the specified model and settings.
         
         Args:
             model_root: Path to the model directory
