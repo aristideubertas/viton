@@ -7,8 +7,17 @@ echo "Starting Dresty setup..."
 
 # Check if conda is installed
 if ! command -v conda &> /dev/null; then
-    echo "Conda is not installed. Please install Miniconda or Anaconda first."
-    exit 1
+    echo "Conda not found. Installing Miniconda..."
+    
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+    bash miniconda.sh -b -p $HOME/miniconda
+    rm miniconda.sh
+
+    # Initialize conda for bash
+    $HOME/miniconda/bin/conda init bash
+
+    # Load the conda function into current shell (important if running non-interactively)
+    source ~/.bashrc
 fi
 
 # Check if AWS CLI is installed
